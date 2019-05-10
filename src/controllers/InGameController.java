@@ -35,5 +35,6 @@ public class InGameController implements InGameContract.Controller {
     public void move(Directon directon) {
         Table currentGame = GameContents.getCurrentGame();
         currentGame.move(directon);
+        loadGameTable();//todo2 remove it
     }
 }

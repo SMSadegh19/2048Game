@@ -1,40 +1,44 @@
 package models;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 public class Table {
     private int baseNumber;
     private int numberOfRows;
     private int numberOfColumns;
-    private Cell[][] cells = new Cell[numberOfRows][numberOfColumns];
+    private Cell[][] cells;
 
     private int score = 0;
+
+    public int getNumberOfRows() {
+        return numberOfRows;
+    }
+
+    public int getNumberOfColumns() {
+        return numberOfColumns;
+    }
+
+    public Cell[][] getCells() {
+        return cells;
+    }
+
+    public int getScore() {
+        return score;
+    }
 
     public Table(int baseNumber, int numberOfRows, int numberOfColumns) {
         this.baseNumber = baseNumber;
         this.numberOfRows = numberOfRows;
         this.numberOfColumns = numberOfColumns;
-        initCells(cells);
-    }
-
-    private void initCells(Cell[][] cells) {
-        for (int i = 0; i < cells.length; i++) {
-            for (int j = 0; j < cells[j].length; j++) {
-                cells[i][j] = new Cell();
-            }
-        }
-    }
-
-    private int makeNewNumber() {
-        int zeroOrOne = Math.abs(new Random().nextInt()) % 2;
-        return (zeroOrOne + 1) * baseNumber;
+        cells = new Cell[numberOfRows][numberOfColumns];
+        Tools.initCells(cells);
+        releaseNewNumber();
     }
 
     private void clockWiseQuarterRotation(int rotationCount) {
         for (int rotationNumber = 0; rotationNumber < rotationCount; rotationNumber++) {
             Cell[][] newCells = new Cell[numberOfColumns][numberOfRows];
-            initCells(newCells);
+            Tools.initCells(newCells);
             for (int i = 0; i < numberOfColumns; i++) {
                 for (int j = 0; j < numberOfRows; j++) {
                     newCells[i][j].setValue(cells[numberOfRows - 1 - j][i].getValue());
@@ -64,9 +68,28 @@ public class Table {
                 rotationCount = 0;
                 break;
         }
+
+        Cell[][] oldCells = Tools.getCellsCopy(cells);
+
         clockWiseQuarterRotation(rotationCount);
         dropDown();
         clockWiseQuarterRotation((4 - rotationCount) % 4);
+
+//        if (canMove()) {
+        // TODO: 5/10/19
+//        }
+//        else {
+        if (!Tools.cellsEqual(oldCells, cells)) {
+            releaseNewNumber();
+        }
+//        }
+    }
+
+    private void releaseNewNumber() {
+        Cell randomEmptyCell = Tools.getRandomEmptyCell(cells);
+        if (randomEmptyCell != null) {
+            randomEmptyCell.setValue(Tools.makeNewNumber(baseNumber));
+        }
     }
 
     private void dropDown() {
