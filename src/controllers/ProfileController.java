@@ -32,4 +32,15 @@ public class ProfileController implements ProfileContract.Controller {
             Notify.logMessage("Profile created!");
         }
     }
+
+    @Override
+    public void changeUsername(String newName) {
+        Profile profile = GameContents.getCurrentProfile();
+        if (GameContents.getProfile(newName) != null) {
+            Notify.logMessage("This profile is already exist!");
+        } else {
+            profile.setName(newName);
+            Notify.logMessage("Profile user name change successfully!");
+        }
+    }
 }

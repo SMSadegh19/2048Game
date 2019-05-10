@@ -28,6 +28,10 @@ public class GameContents {
         GameContents.currentProfile = currentProfile;
     }
 
+    public static Profile getCurrentProfile() {
+        return currentProfile;
+    }
+
     public static void addProfile(Profile profile) {
         profiles.add(profile);
     }
