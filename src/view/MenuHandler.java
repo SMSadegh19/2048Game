@@ -1,5 +1,6 @@
 package view;
 
+import view.menuItems.InGameMenu;
 import view.menuItems.MenuItem;
 import view.menuItems.ProfilesMenu;
 
@@ -53,6 +54,6 @@ public class MenuHandler {
 
     public static void startFirstMenu() {
 //       todo new AccountController().loadAccounts();
-        startMenu(new ProfilesMenu(), TOP_TO_DOWN);
+        startMenu(new InGameMenu(), TOP_TO_DOWN);
     }
 }
