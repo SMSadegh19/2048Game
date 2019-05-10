@@ -77,3 +77,7 @@ fabric.properties
 # Editor-based Rest Client
 .idea/httpRequests
 
+/.idea/modules.xml
+/.idea/misc.xml
+/.idea/encodings.xml
+/2048Game.iml
