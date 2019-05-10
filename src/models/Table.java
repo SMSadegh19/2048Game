@@ -1,5 +1,7 @@
 package models;
 
+import view.Notify;
+
 import java.util.ArrayList;
 
 public class Table {
@@ -75,14 +77,28 @@ public class Table {
         dropDown();
         clockWiseQuarterRotation((4 - rotationCount) % 4);
 
-//        if (canMove()) {
-        // TODO: 5/10/19
-//        }
-//        else {
+
         if (!Tools.cellsEqual(oldCells, cells)) {
             releaseNewNumber();
         }
-//        }
+        if (!canMove()) {
+            Notify.logMessage("GAME OVER!!");
+        }
+    }
+
+    private boolean canMove() {
+        boolean canMove = false;
+        for (int i = 0; i < 4; i++) {
+            clockWiseQuarterRotation(i);
+            if (canDropDown()) {
+                canMove = true;
+            }
+            clockWiseQuarterRotation((4 - i) % 4);
+            if (canMove) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private void releaseNewNumber() {

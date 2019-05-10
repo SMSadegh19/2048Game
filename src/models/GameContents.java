@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class GameContents {
     private static Table currentGame;
     private static ArrayList<Profile> profiles = new ArrayList<>();
+    private static Profile currnetProfile;
 
     public static Table getCurrentGame() {
         return currentGame;

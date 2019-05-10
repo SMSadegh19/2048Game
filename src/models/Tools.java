@@ -57,8 +57,4 @@ public class Tools {
         }
         return emptyCells.get(random.nextInt(emptyCells.size()));
     }
-
-    public static int randomNumber(int bound) {
-        return random.nextInt(bound);
-    }
 }
