@@ -108,6 +108,7 @@ public class Table {
 
                 if (cell1.getValue() == cell2.getValue()) {
                     Cell mergedCell = new Cell(cell1, cell2);
+                    score += mergedCell.getValue();
                     newColumn.add(0, mergedCell);
                     i = j;
                     continue outer;
