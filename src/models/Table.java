@@ -48,24 +48,39 @@ public class Table {
     }
 
     public void move(Directon directon) {
-        int rotationCount = 0;
+        int rotationCount = 4;
         switch (directon) {
             case LEFT:
                 rotationCount = 3;
+                break;
             case UP:
                 rotationCount = 2;
+                break;
             case RIGHT:
                 rotationCount = 1;
+                break;
             case DOWN:
                 rotationCount = 0;
+                break;
         }
         clockWiseQuarterRotation(rotationCount);
-        hitDown();
+        dropDown();
         clockWiseQuarterRotation(4 - rotationCount);
     }
 
-    private void hitDown() {
+    private void dropDown() {
+        if (!canDropDown()) {
+            return;
+        }
+        for (int j = 0; j < numberOfColumns; j++) {
+            if (canDropDownColumn(j)) {
+                dropDownColumn(j);
+            }
+        }
+    }
 
+    private void dropDownColumn(int columnNumber) {
+        // TODO: 5/10/19
     }
 
     private boolean canDropDown() {
