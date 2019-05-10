@@ -1,5 +1,7 @@
 package view.commands;
 
+import controllers.InGameController;
+
 import java.util.regex.Pattern;
 
 public class StartGameCommand extends Command {
@@ -13,6 +15,6 @@ public class StartGameCommand extends Command {
         int baseNumber = Integer.parseInt(matcher.group(1));
         int numberOfRows = Integer.parseInt(matcher.group(2));
         int numberOfColumns = Integer.parseInt(matcher.group(3));
-        // TODO: 5/10/19
+        new InGameController().startGame(baseNumber, numberOfRows, numberOfColumns);
     }
 }

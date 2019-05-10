@@ -1,33 +1,34 @@
 package view.commands;
 
+import controllers.InGameController;
 import models.Directon;
 
 import java.util.regex.Pattern;
 
 public class MoveCommand extends Command {
     {
-        name = "(up | down | left | right)";
-        pattern = Pattern.compile("(up|down|right|left)", Pattern.CASE_INSENSITIVE);
+        name = "(u|d|l|r)";
+        pattern = Pattern.compile("([udrl])", Pattern.CASE_INSENSITIVE);
     }
 
     @Override
     public void doIt() {
         String move = matcher.group(1).toLowerCase();
-        Directon directon;
+        Directon directon = null;
         switch (move) {
-            case "up":
+            case "u":
                 directon = Directon.UP;
                 break;
-            case "down":
+            case "d":
                 directon = Directon.DOWN;
                 break;
-            case "right":
+            case "r":
                 directon = Directon.RIGHT;
                 break;
-            case "left":
+            case "l":
                 directon = Directon.LEFT;
                 break;
         }
-        // TODO: 5/10/19
+        new InGameController().move(directon);
     }
 }

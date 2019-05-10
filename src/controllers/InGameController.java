@@ -1,8 +1,10 @@
 package controllers;
 
 import contracts.InGameContract;
+import models.Directon;
 import models.GameContents;
 import models.Table;
+import view.Notify;
 import view.views.InGameView;
 
 public class InGameController implements InGameContract.Controller {
@@ -17,7 +19,6 @@ public class InGameController implements InGameContract.Controller {
     public void loadGameTable() {
         Table gameTable = GameContents.getCurrentGame();
         if (gameTable == null) {
-            // TODO: 5/10/19
         } else {
             view.showGameTable(GameContents.getCurrentGame());
         }
@@ -25,6 +26,14 @@ public class InGameController implements InGameContract.Controller {
 
     @Override
     public void startGame(int baseNumber, int numberOfRows, int numberOfColumns) {
-        // TODO: 5/10/19
+        Table gameTable = new Table(baseNumber, numberOfRows, numberOfColumns);
+        GameContents.setCurrentGame(gameTable);
+        Notify.logMessage("Game created.");
+    }
+
+    @Override
+    public void move(Directon directon) {
+        Table currentGame = GameContents.getCurrentGame();
+        currentGame.move(directon);
     }
 }
