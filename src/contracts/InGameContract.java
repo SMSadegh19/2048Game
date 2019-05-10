@@ -5,8 +5,6 @@ import models.Table;
 
 public interface InGameContract {
     interface View {
-        void setController(Controller controller);
-
         void showGameTable(Table table);
     }
 

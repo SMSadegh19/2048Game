@@ -2,7 +2,6 @@ package view;
 
 import view.menuItems.InGameMenu;
 import view.menuItems.MenuItem;
-import view.menuItems.ProfilesMenu;
 
 import static view.MenuChangingState.*;
 import static view.Notify.*;

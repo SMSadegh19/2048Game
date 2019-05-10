@@ -1,6 +1,7 @@
-package view.commands;
+package view.commands.inGameCommands;
 
 import controllers.InGameController;
+import view.commands.Command;
 
 import java.util.regex.Pattern;
 

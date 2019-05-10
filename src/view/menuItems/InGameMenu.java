@@ -1,8 +1,6 @@
 package view.menuItems;
 
-import view.commands.MoveCommand;
-import view.commands.ShowCommand;
-import view.commands.StartGameCommand;
+import view.commands.inGameCommands.*;
 
 import static view.menuItems.MenuConstants.IN_GAME_MENU;
 

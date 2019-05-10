@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class GameContents {
     private static Table currentGame;
     private static ArrayList<Profile> profiles = new ArrayList<>();
-    private static Profile currnetProfile;
+    private static Profile currentProfile;
 
     public static Table getCurrentGame() {
         return currentGame;
@@ -24,7 +24,11 @@ public class GameContents {
         return null;
     }
 
-    public static void addProfile(String name, String password) {
-        profiles.add(new Profile(name, password));
+    public static void setCurrentProfile(Profile currentProfile) {
+        GameContents.currentProfile = currentProfile;
+    }
+
+    public static void addProfile(Profile profile) {
+        profiles.add(profile);
     }
 }

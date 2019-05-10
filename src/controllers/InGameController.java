@@ -12,7 +12,6 @@ public class InGameController implements InGameContract.Controller {
 
     public InGameController() {
         view = new InGameView();
-        view.setController(this);
     }
 
     @Override

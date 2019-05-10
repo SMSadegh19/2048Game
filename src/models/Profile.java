@@ -16,6 +16,10 @@ public class Profile {
         return name;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
     public int getHighScore() {
         int max = 0;
         for (int score : scores) {
