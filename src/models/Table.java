@@ -67,4 +67,36 @@ public class Table {
     private void hitDown() {
 
     }
+
+    private boolean canDropDown() {
+        for (int j = 0; j < numberOfColumns; j++) {
+            for (int i = 0; i < numberOfRows; i++) {
+                if (canDropDownColumn(j)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    private boolean canDropDownColumn(int columnNumber) {
+        if (!columnIsFull(columnNumber)) {
+            return true;
+        }
+        for (int i = 0; i < numberOfRows - 1; i++) {
+            if (cells[i][columnNumber].getValue() == cells[i + 1][columnNumber].getValue()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean columnIsFull(int columnNumber) {
+        for (int i = 0; i < numberOfRows; i++) {
+            if (cells[i][columnNumber].getValue() == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
