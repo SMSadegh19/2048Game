@@ -1,5 +1,6 @@
 package models;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Table {
@@ -65,7 +66,7 @@ public class Table {
         }
         clockWiseQuarterRotation(rotationCount);
         dropDown();
-        clockWiseQuarterRotation(4 - rotationCount);
+        clockWiseQuarterRotation((4 - rotationCount) % 4);
     }
 
     private void dropDown() {
@@ -80,7 +81,53 @@ public class Table {
     }
 
     private void dropDownColumn(int columnNumber) {
-        // TODO: 5/10/19
+        ArrayList<Cell> newColumn = new ArrayList<>();
+
+        outer:
+        for (int i = numberOfRows - 1; i >= 0; i--) {
+            Cell cell1 = cells[i][columnNumber];
+            if (cell1.getValue() == 0) {
+                continue;
+            }
+
+            if (i == 0) {
+                newColumn.add(0, new Cell(cell1));
+                continue;
+            }
+
+            for (int j = i - 1; j >= 0; j--) {
+                Cell cell2 = cells[j][columnNumber];
+                if (cell2.getValue() == 0) {
+                    if (j == 0) {
+                        newColumn.add(0, new Cell(cell1));
+                        break outer;
+                    } else {
+                        continue;
+                    }
+                }
+
+                if (cell1.getValue() == cell2.getValue()) {
+                    Cell mergedCell = new Cell(cell1, cell2);
+                    newColumn.add(0, mergedCell);
+                    i = j;
+                    continue outer;
+                } else {
+                    newColumn.add(0, new Cell(cell1));
+                    continue outer;
+                }
+            }
+        }
+
+        replaceColumn(columnNumber, newColumn);
+    }
+
+    private void replaceColumn(int columnNumber, ArrayList<Cell> newColumn) {
+        for (int i = 0; i < numberOfRows; i++) {
+            cells[i][columnNumber] = new Cell();
+        }
+        for (int i = 0; i < newColumn.size(); i++) {
+            cells[i + numberOfRows - newColumn.size()][columnNumber] = new Cell(newColumn.get(i));
+        }
     }
 
     private boolean canDropDown() {
