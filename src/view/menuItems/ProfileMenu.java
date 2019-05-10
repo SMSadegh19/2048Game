@@ -14,5 +14,6 @@ public class ProfileMenu extends MenuItem {
         commands.add(new LoginCommand());
 
         subMenus.add(new MainMenu());
+        subMenus.add(new ScoreboardMenu());
     }
 }

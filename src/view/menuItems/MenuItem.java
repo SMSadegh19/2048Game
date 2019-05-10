@@ -1,6 +1,8 @@
 package view.menuItems;
 
 import view.commands.Command;
+import view.commands.commonCommands.ExitCommand;
+import view.commands.commonCommands.HelpCommand;
 
 import java.util.ArrayList;
 
@@ -12,6 +14,8 @@ public abstract class MenuItem {
 
     {
         initMenuItem();
+        commands.add(new HelpCommand());
+        commands.add(new ExitCommand());
     }
 
     public String getName() {

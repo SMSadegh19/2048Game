@@ -31,4 +31,8 @@ public class GameContents {
     public static void addProfile(Profile profile) {
         profiles.add(profile);
     }
+
+    public static ArrayList<Profile> getProfiles() {
+        return profiles;
+    }
 }
