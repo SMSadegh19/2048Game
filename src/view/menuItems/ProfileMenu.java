@@ -2,6 +2,7 @@ package view.menuItems;
 
 import view.commands.profileCommands.CreateProfileCommand;
 import view.commands.profileCommands.LoginCommand;
+import view.menuItems.graphicElements.scenes.ProfileScene;
 
 import static view.menuItems.MenuConstants.PROFILE_MENU;
 
@@ -15,5 +16,7 @@ public class ProfileMenu extends MenuItem {
 
         subMenus.add(new MainMenu());
         subMenus.add(new ScoreboardMenu());
+
+        scene = ProfileScene.makeScene();
     }
 }

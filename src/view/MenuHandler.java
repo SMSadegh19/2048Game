@@ -1,13 +1,20 @@
 package view;
 
+import javafx.stage.Stage;
 import view.menuItems.InGameMenu;
 import view.menuItems.MenuItem;
+import view.menuItems.ProfileMenu;
 
 import static view.MenuChangingState.*;
 import static view.Notify.*;
 
 public class MenuHandler {
+    private static Stage stage;
     private static MenuItem currentMenu = null;
+
+    public static void setStage(Stage stage) {
+        MenuHandler.stage = stage;
+    }
 
     public static MenuItem getCurrentMenu() {
         return currentMenu;
@@ -34,7 +41,10 @@ public class MenuHandler {
     private static void startMenu(MenuItem menuItem, MenuChangingState state) {
         MenuItem tempParent = currentMenu;
         currentMenu = menuItem;
-        if (state == TOP_TO_DOWN) {
+        if (state != AT_FIRST_ENTER) {
+            stage.setScene(currentMenu.getScene());
+        }
+        if (state == TOP_TO_DOWN || state == AT_FIRST_ENTER) {
             menuItem.setParentMenu(tempParent);
         }
 
@@ -53,6 +63,6 @@ public class MenuHandler {
 
     public static void startFirstMenu() {
 //       todo new AccountController().loadAccounts();
-        startMenu(new InGameMenu(), TOP_TO_DOWN);
+        startMenu(new ProfileMenu(), AT_FIRST_ENTER);
     }
 }

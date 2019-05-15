@@ -1,5 +1,6 @@
 package view.menuItems;
 
+import javafx.scene.Scene;
 import view.commands.Command;
 import view.commands.commonCommands.ExitCommand;
 import view.commands.commonCommands.HelpCommand;
@@ -11,6 +12,7 @@ public abstract class MenuItem {
     protected MenuItem parentMenu = null;
     protected ArrayList<Command> commands = new ArrayList<>();
     protected ArrayList<MenuItem> subMenus = new ArrayList<>();
+    protected Scene scene = null;
 
     {
         initMenuItem();
@@ -36,6 +38,10 @@ public abstract class MenuItem {
 
     public void setParentMenu(MenuItem parentMenu) {
         this.parentMenu = parentMenu;
+    }
+
+    public Scene getScene() {
+        return scene;
     }
 
     protected abstract void initMenuItem();

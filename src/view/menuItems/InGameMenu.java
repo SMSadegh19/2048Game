@@ -1,6 +1,7 @@
 package view.menuItems;
 
 import view.commands.inGameCommands.*;
+import view.menuItems.graphicElements.scenes.InGameScene;
 
 import static view.menuItems.MenuConstants.IN_GAME_MENU;
 
@@ -14,5 +15,7 @@ public class InGameMenu extends MenuItem {
         commands.add(new ShowCommand());
 
         //no sub menu
+
+        scene = InGameScene.makeScene();
     }
 }
