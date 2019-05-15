@@ -12,6 +12,7 @@ import javafx.scene.text.Text;
 import view.MenuHandler;
 import view.menuItems.graphicElements.ExitButton;
 import view.menuItems.graphicElements.MyButton;
+import view.menuItems.graphicElements.MyGridPane;
 
 import static view.menuItems.MenuConstants.SCOREBOARD_MENU;
 
@@ -36,7 +37,7 @@ public class ProfileSceneMaker extends SceneMaker {
 
         Button exitButton = new ExitButton();
 
-        GridPane gridPane = gridPaneInit();
+        GridPane gridPane = new MyGridPane();
 
         gridPane.add(scoreboardButton, 0, 0);
         gridPane.add(usernameLabel, 0, 1);
@@ -50,15 +51,5 @@ public class ProfileSceneMaker extends SceneMaker {
         Group group = new Group(gridPane);
 
         return new Scene(group, 1000, 600);
-    }
-
-    private static GridPane gridPaneInit() {
-        GridPane gridPane = new GridPane();
-        gridPane.setMinSize(1000, 600);
-        gridPane.setPadding(new Insets(10, 10, 10, 10));
-        gridPane.setVgap(5);
-        gridPane.setHgap(5);
-        gridPane.setAlignment(Pos.CENTER);
-        return gridPane;
     }
 }
