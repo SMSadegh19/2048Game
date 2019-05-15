@@ -12,6 +12,10 @@ public class Table {
 
     private int score = 0;
 
+    public int getBaseNumber() {
+        return baseNumber;
+    }
+
     public int getNumberOfRows() {
         return numberOfRows;
     }

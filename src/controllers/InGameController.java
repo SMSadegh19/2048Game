@@ -5,6 +5,7 @@ import models.Directon;
 import models.GameContents;
 import models.Table;
 import view.Notify;
+import view.menuItems.graphicElements.sceneMakers.InGameSceneMaker;
 import view.views.InGameView;
 
 public class InGameController implements InGameContract.Controller {
@@ -19,6 +20,7 @@ public class InGameController implements InGameContract.Controller {
         Table gameTable = GameContents.getCurrentGame();
         if (gameTable == null) {
         } else {
+            InGameSceneMaker.updateScene(gameTable);
             view.showGameTable(GameContents.getCurrentGame());
         }
     }
