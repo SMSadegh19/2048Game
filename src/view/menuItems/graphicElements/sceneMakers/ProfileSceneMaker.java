@@ -1,4 +1,4 @@
-package view.menuItems.graphicElements.scenes;
+package view.menuItems.graphicElements.sceneMakers;
 
 import controllers.ProfileController;
 import javafx.geometry.Insets;
@@ -15,8 +15,10 @@ import view.menuItems.graphicElements.MyButton;
 
 import static view.menuItems.MenuConstants.SCOREBOARD_MENU;
 
-public class ProfileScene {
-    public static Scene makeScene() {
+public class ProfileSceneMaker extends SceneMaker {
+
+    @Override
+    public Scene makeScene() {
         Text usernameLabel = new Text("Username: ");
         Text passwordLabel = new Text("Password: ");
 

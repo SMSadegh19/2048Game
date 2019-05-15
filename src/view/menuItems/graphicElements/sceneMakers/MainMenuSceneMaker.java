@@ -1,11 +1,12 @@
-package view.menuItems.graphicElements.scenes;
+package view.menuItems.graphicElements.sceneMakers;
 
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 
-public class InGameScene {
-    public static Scene makeScene() {
+public class MainMenuSceneMaker extends SceneMaker {
+    @Override
+    public Scene makeScene() {
         // TODO: 5/15/19
 
         Button chert = new Button();

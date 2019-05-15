@@ -1,7 +1,7 @@
 package view.menuItems;
 
 import view.commands.inGameCommands.*;
-import view.menuItems.graphicElements.scenes.InGameScene;
+import view.menuItems.graphicElements.sceneMakers.InGameSceneMaker;
 
 import static view.menuItems.MenuConstants.IN_GAME_MENU;
 
@@ -16,6 +16,6 @@ public class InGameMenu extends MenuItem {
 
         //no sub menu
 
-        scene = InGameScene.makeScene();
+        sceneMaker = new InGameSceneMaker();
     }
 }

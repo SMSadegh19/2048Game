@@ -2,7 +2,7 @@ package view.menuItems;
 
 import view.commands.commonCommands.*;
 import view.commands.profileCommands.ChangeUsernameCommand;
-import view.menuItems.graphicElements.scenes.MainMenuScene;
+import view.menuItems.graphicElements.sceneMakers.MainMenuSceneMaker;
 
 import static view.menuItems.MenuConstants.MAIN_MENU;
 
@@ -16,6 +16,6 @@ public class MainMenu extends MenuItem {
 
         subMenus.add(new InGameMenu());
 
-        scene = MainMenuScene.makeScene();
+        sceneMaker = new MainMenuSceneMaker();
     }
 }

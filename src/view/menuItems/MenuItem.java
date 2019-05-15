@@ -4,6 +4,7 @@ import javafx.scene.Scene;
 import view.commands.Command;
 import view.commands.commonCommands.ExitCommand;
 import view.commands.commonCommands.HelpCommand;
+import view.menuItems.graphicElements.sceneMakers.SceneMaker;
 
 import java.util.ArrayList;
 
@@ -12,7 +13,7 @@ public abstract class MenuItem {
     protected MenuItem parentMenu = null;
     protected ArrayList<Command> commands = new ArrayList<>();
     protected ArrayList<MenuItem> subMenus = new ArrayList<>();
-    protected Scene scene = null;
+    protected SceneMaker sceneMaker = null;
 
     {
         initMenuItem();
@@ -40,8 +41,8 @@ public abstract class MenuItem {
         this.parentMenu = parentMenu;
     }
 
-    public Scene getScene() {
-        return scene;
+    public Scene getNewScene() {
+        return sceneMaker.makeScene();
     }
 
     protected abstract void initMenuItem();

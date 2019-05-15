@@ -1,7 +1,6 @@
 package view;
 
 import javafx.stage.Stage;
-import view.menuItems.InGameMenu;
 import view.menuItems.MenuItem;
 import view.menuItems.ProfileMenu;
 
@@ -42,7 +41,7 @@ public class MenuHandler {
         MenuItem tempParent = currentMenu;
         currentMenu = menuItem;
         if (state != AT_FIRST_ENTER) {
-            stage.setScene(currentMenu.getScene());
+            stage.setScene(currentMenu.getNewScene());
         }
         if (state == TOP_TO_DOWN || state == AT_FIRST_ENTER) {
             menuItem.setParentMenu(tempParent);
