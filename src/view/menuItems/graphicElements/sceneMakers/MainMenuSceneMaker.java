@@ -19,6 +19,8 @@ import view.menuItems.graphicElements.ExitButton;
 import view.menuItems.graphicElements.MyButton;
 import view.menuItems.graphicElements.MyGridPane;
 
+import java.util.ArrayList;
+
 import static view.menuItems.MenuConstants.IN_GAME_MENU;
 
 public class MainMenuSceneMaker extends SceneMaker {
@@ -57,12 +59,16 @@ public class MainMenuSceneMaker extends SceneMaker {
         }
         Group group = new Group();
 
-        ImageView backgroundView = Background.getInstance();
-        if (backgroundView != null) {
-            group.getChildren().addAll(backgroundView, gridPane);
-        } else {
-            group.getChildren().add(gridPane);
+        ImageView backgroundView = Background.getInstance(2);
+        ArrayList<ImageView> tiles = Background.getRandomTiles();
+        if (tiles.size() != 0) {
+            if (backgroundView != null) {
+                group.getChildren().add(backgroundView);
+            }
+            group.getChildren().addAll(tiles);
         }
+
+        group.getChildren().add(gridPane);
 
 
         return new Scene(group, 1000, 600);

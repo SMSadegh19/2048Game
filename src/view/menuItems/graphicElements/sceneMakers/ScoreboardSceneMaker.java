@@ -34,7 +34,7 @@ public class ScoreboardSceneMaker extends SceneMaker {
 
         Group group = new Group();
 
-        ImageView backgroundView = Background.getInstance();
+        ImageView backgroundView = Background.getInstance(1);
         if (backgroundView != null) {
             group.getChildren().addAll(backgroundView, gridPane, exitButton);
         } else {

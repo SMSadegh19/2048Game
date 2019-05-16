@@ -60,7 +60,7 @@ public class ProfileSceneMaker extends SceneMaker {
         gridPane.add(loginButton, 1, 3);
         gridPane.add(exitButton, 0, 4);
 
-        ImageView backgroundView = Background.getInstance();
+        ImageView backgroundView = Background.getInstance(1);
         if (backgroundView != null) {
             group.getChildren().add(backgroundView);
         }
