@@ -10,9 +10,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import view.MenuHandler;
 import view.Notify;
+import view.menuItems.graphicElements.Background;
 import view.menuItems.graphicElements.ExitButton;
 import view.menuItems.graphicElements.MyButton;
 import view.menuItems.graphicElements.MyGridPane;
@@ -53,7 +55,15 @@ public class MainMenuSceneMaker extends SceneMaker {
             GridPane.setHalignment(node, HPos.CENTER);
             GridPane.setValignment(node, VPos.CENTER);
         }
-        Group group = new Group(gridPane);
+        Group group = new Group();
+
+        ImageView backgroundView = Background.getInstance();
+        if (backgroundView != null) {
+            group.getChildren().addAll(backgroundView, gridPane);
+        } else {
+            group.getChildren().add(gridPane);
+        }
+
 
         return new Scene(group, 1000, 600);
     }

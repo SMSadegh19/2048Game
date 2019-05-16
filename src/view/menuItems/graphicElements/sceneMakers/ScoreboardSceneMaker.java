@@ -4,9 +4,11 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import models.GameContents;
 import models.Profile;
+import view.menuItems.graphicElements.Background;
 import view.menuItems.graphicElements.ExitButton;
 import view.menuItems.graphicElements.MyGridPane;
 
@@ -30,7 +32,14 @@ public class ScoreboardSceneMaker extends SceneMaker {
         Button exitButton = new ExitButton();
         exitButton.relocate(500, 100);
 
-        Group group = new Group(gridPane, exitButton);
+        Group group = new Group();
+
+        ImageView backgroundView = Background.getInstance();
+        if (backgroundView != null) {
+            group.getChildren().addAll(backgroundView, gridPane, exitButton);
+        } else {
+            group.getChildren().addAll(gridPane, exitButton);
+        }
 
         return new Scene(group, 1000, 600);
     }
