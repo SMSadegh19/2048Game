@@ -9,8 +9,13 @@ public class Table {
     private int numberOfRows;
     private int numberOfColumns;
     private Cell[][] cells;
+    private boolean gameOver = false;
 
     private int score = 0;
+
+    public boolean isGameOver() {
+        return gameOver;
+    }
 
     public int getBaseNumber() {
         return baseNumber;
@@ -81,12 +86,14 @@ public class Table {
         dropDown();
         clockWiseQuarterRotation((4 - rotationCount) % 4);
 
+        GameContents.getCurrentProfile().catchNewScore(score);
 
         if (!Tools.cellsEqual(oldCells, cells)) {
             releaseNewNumber();
         }
         if (!canMove()) {
             Notify.logMessage("GAME OVER!!");
+            gameOver = true;
         }
     }
 

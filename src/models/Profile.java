@@ -1,11 +1,9 @@
 package models;
 
-import java.util.ArrayList;
-
 public class Profile {
     private String name;
     private String password;
-    private ArrayList<Integer> scores = new ArrayList<>();
+    private int highScore;
 
     public Profile(String name, String password) {
         this.name = name;
@@ -25,16 +23,12 @@ public class Profile {
     }
 
     public int getHighScore() {
-        int max = 0;
-        for (int score : scores) {
-            if (score > max) {
-                max = score;
-            }
-        }
-        return max;
+        return highScore;
     }
 
-    public void addScore(int newScore) {
-        scores.add(newScore);
+    public void catchNewScore(int newScore) {
+        if (newScore > highScore) {
+            highScore = newScore;
+        }
     }
 }
