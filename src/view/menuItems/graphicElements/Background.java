@@ -43,7 +43,7 @@ public class Background {
         } else {
             imageView.setX(0);
             imageView.setFitHeight(1500);
-            imageView.setFitWidth(1000);
+            imageView.setFitWidth(550);
         }
 
         //Setting the preserve ratio of the image view
